@@ -4,6 +4,12 @@
     import OurBeers from "$lib/OurBeers.svelte";
     import RibbonAds from "$lib/RibbonAds.svelte"
 
+/*
+The below sets of data are just mocked up to show that each one of the components will be able to digest the data as
+it will most likely be sent in. In the next step we will install contentful, and the objects represenintg our data below,
+will instead come from calls to our contentful site.
+*/
+
     let beers = [{
             "name":"Michelob Ultra",
             "blurb":"This blurb is coming from the beers object",
@@ -32,6 +38,18 @@
             "src":"./img/profile_can_seltzer.png",
             "alt":"A profile view image of Michelob Ultra Seltzer Can"
         }];
+  
+    let ribbonAds = [
+        {
+            "heading" : "Buy Stuff",
+            "blurb" : "We'bve got you covered from the starting line to the cheers."
+        },{
+            "heading" : "Buy Stuff 2",
+            "blurb" : "Another Ad? AAAAAAAhhhhhhh!"
+        }
+    ]
+
+
 </script>
 
 <Carousel />
@@ -44,5 +62,7 @@
     sectionTitle="Seltzers"
     beers={seltzers} 
 />  
-<RibbonAds /> 
+<RibbonAds 
+    ads={ribbonAds}
+/> 
        

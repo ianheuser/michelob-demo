@@ -5,7 +5,7 @@
 
 
 <div id="main">
-    <!-- split the logo and navigation out into two separate components -->
+    <!--still need to split the logo and navigation out into two separate components -->
     <Navigation />
 
     <slot>
