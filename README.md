@@ -16,3 +16,16 @@ Here are the steps that will be saved into branches. Currently Step 3 and 4 do n
 4. step-four:
    - creating new pages, pages as componenets
 
+   
+
+Once you've cloned the repo
+
+1. `cd michelob-demo/sveltekit-skeleton`
+2. `npm install`
+3. `npm run dev`
+
+Make sure you are in the 'sveltekit-skeleton' folder when running the install and run commands.
+
+
+
+
