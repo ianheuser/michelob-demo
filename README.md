@@ -5,7 +5,7 @@ I've set the project up to where there are multiple branches, split into the sta
 
 The main branch is always the furthest along version of the project, and as I get to certain milestones, I will save a new branch. For instance, I'm currently working on the second step, but when I finished the first, I saved a new branch named "step-one".
 
-Here are the steps that will be saved into branches.
+Here are the steps that will be saved into branches. Currently Step 3 and 4 do not have completed branches. 
 
 1. step-one:
    - create a static HTML/CSS web page (using Michelob ULtra's current site for example)
