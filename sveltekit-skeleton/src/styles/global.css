@@ -263,21 +263,21 @@ h1 {
     text-align: center;
 }
 
-.beers.container {
+.products.container {
     display: flex;
     flex-direction: row;
 }
 
-.beer.container {
+.product.container {
     flex-grow: 1;
     text-align: center;
 }
 
-.beer.container img {
+.product.container img {
     height: 250px;
 }
 
-.beer button {
+.product button {
     background:linear-gradient(to bottom, rgb(28, 28, 155) 5%, navy 100%);
 	background-color:navy;
     color: white;
@@ -287,7 +287,7 @@ h1 {
 }
 
 
-.beer button:hover {
+.product button:hover {
     background: linear-gradient(to bottom, #f5526d 5%, #d00a2c 100%);
     background-color: #d00a2c;
     color: white;

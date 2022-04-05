@@ -1,43 +1,41 @@
 <script>
     import Carousel from '$lib/Carousel.svelte';
     import VideoSection from "$lib/videoSection.svelte";
-    import OurBeers from "$lib/OurBeers.svelte";
+    import Products from "$lib/Products.svelte";
     import RibbonAds from "$lib/RibbonAds.svelte"
+    
+    import * as contentful from "contentful" ;
+    const client = contentful.createClient({
+        space: "3q892y4ckspg",
+        accessToken: "w_ghIFLSyjNtCW4BdthHMn8WH21jXSC54suwYdXvxxQ",
+        environment: "master"
+    });
 
-/*
-The below sets of data are just mocked up to show that each one of the components will be able to digest the data as
-it will most likely be sent in. In the next step we will install contentful, and the objects represenintg our data below,
-will instead come from calls to our contentful site.
-*/
+    let beers = [];
+    let seltzers = [];
 
-    let beers = [{
-            "name":"Michelob Ultra",
-            "blurb":"This blurb is coming from the beers object",
-            "src":"./img/profile_bottle_pure_gold.png",
-            "alt":"A profile view image of Michelob Ultra"
-        },{ 
-            "name":"Michelob Ultra Pure Gold",
-            "blurb":"USDA Certified Organic Beer",
-            "src":"./img/profile_bottle_pure_gold.png",
-            "alt":"A profile view image of Michelob Ultra Pure Gold"
-        },{ 
-            "name":"Michelob Ultra Amber Max",
-            "blurb":"Taste the Impossible",
-            "src":"./img/profile_can_amber.jpg",
-            "alt":"A profile view image of Michelob Ultra Amber Max"
-        },{ 
-            "name":"Michelob Ultra Infusions",
-            "blurb":"Beer meets exotic fruit",
-            "src":"./img/profile_can_infusions.png",
-            "alt":"A profile view image of Michelob Ultra Infusions Can"
-        }];
+    client.getEntries({
+      content_type: "product",
+      "fields.brand.sys.id": "6qgNhvX2JOgZ80ZWyaq4zk",
+      "fields.type" : "Beer"
+    }).then(response => {
+       beers = response.items;
+     }).catch(error => {
+        console.log("Error in Beers");
+        console.log(error);
+    }); 
 
-    let seltzers = [{ 
-            "name":"Michelob Ultra Organic Seltzer",
-            "blurb":"Its only worth it if you enjoy it",
-            "src":"./img/profile_can_seltzer.png",
-            "alt":"A profile view image of Michelob Ultra Seltzer Can"
-        }];
+    client.getEntries({
+      content_type: "product",
+      "fields.brand.sys.id": "6qgNhvX2JOgZ80ZWyaq4zk",
+      "fields.type" : "Seltzer"
+    }).then(response => {
+       seltzers = response.items;
+     }).catch(error => {
+        console.log("Error in Seltzers");
+      console.log(error);
+    }); 
+   
   
     let ribbonAds = [
         {
@@ -54,13 +52,13 @@ will instead come from calls to our contentful site.
 
 <Carousel />
 <VideoSection />
-<OurBeers 
+<Products 
     sectionTitle="Beers"
-    beers={beers} 
+    products={beers}
 />
-<OurBeers 
+<Products 
     sectionTitle="Seltzers"
-    beers={seltzers} 
+    products={seltzers} 
 />  
 <RibbonAds 
     ads={ribbonAds}

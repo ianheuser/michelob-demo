@@ -5,7 +5,7 @@
     export let alt = "Image couldn't be retrieved";
 </script>
 
-<div class="container beer">
+<div class="container product">
     <img {src} {alt} />
     <h3>{name}</h3>
     <p>{blurb}</p>
