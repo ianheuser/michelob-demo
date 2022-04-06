@@ -8,8 +8,11 @@
 <div class="section ribbonAds space">
   {#each ads as ad}
     <RibbonAd 
-      heading="{ad.heading}"
-      blurb="{ad.blurb}"
+      headline="{ad.fields.headline}"
+      text="{ad.fields.text}"
+      buttonLabel="{ad.fields.buttonLabel}"
+      src="{ad.fields.image.fields.file.url}"
+     
     />
   {/each}
 </div>

@@ -13,6 +13,7 @@
 
     let beers = [];
     let seltzers = [];
+    let ribbonAds = [];
 
     client.getEntries({
       content_type: "product",
@@ -36,7 +37,18 @@
       console.log(error);
     }); 
    
+    client.getEntries({
+      content_type: "basicAd",
+      "fields.type": "ribbon"
+    }).then(response => {
+       ribbonAds = response.items;
+       console.dir(ribbonAds)
+     }).catch(error => {
+        console.log("Error in Ribbon");
+        console.log(error);
+    }); 
   
+    /*
     let ribbonAds = [
         {
             "heading" : "Buy Stuff",
@@ -46,6 +58,8 @@
             "blurb" : "Another Ad? AAAAAAAhhhhhhh!"
         }
     ]
+
+    */
 
 
 </script>
