@@ -1,26 +1,29 @@
 <script>
     import Carousel from '$lib/Carousel.svelte';
     import VideoSection from "$lib/videoSection.svelte";
-    import Products from "$lib/Products.svelte";
-    import RibbonAds from "$lib/RibbonAds.svelte"
-    
     import * as contentful from "contentful" ;
+  //  import Products from "$lib/Products.svelte";
     const client = contentful.createClient({
         space: "3q892y4ckspg",
         accessToken: "w_ghIFLSyjNtCW4BdthHMn8WH21jXSC54suwYdXvxxQ",
         environment: "master"
     });
 
-    let beers = [];
-    let seltzers = [];
-    let ribbonAds = [];
+  
 
+   
+    import RibbonAds from "$lib/RibbonAds.svelte"
+    let ribbonAds = [];
+  /*
+  let seltzers = [];
+  let beers = [];
     client.getEntries({
       content_type: "product",
-      "fields.brand.sys.id": "6qgNhvX2JOgZ80ZWyaq4zk",
+      "fields.brand.fields.name": "6qgNhvX2JOgZ80ZWyaq4zk",
       "fields.type" : "Beer"
     }).then(response => {
        beers = response.items;
+       console.log(beers)
      }).catch(error => {
         console.log("Error in Beers");
         console.log(error);
@@ -33,10 +36,10 @@
     }).then(response => {
        seltzers = response.items;
      }).catch(error => {
-        console.log("Error in Seltzers");
-      console.log(error);
+        console.log("Error in Seltzers",error);
     }); 
-   
+  
+     */
     client.getEntries({
       content_type: "basicAd",
       "fields.type": "ribbon"
@@ -47,15 +50,15 @@
         console.log("Error in Ribbon");
         console.log(error);
     }); 
-  
-    /*
+
+  /*
     let ribbonAds = [
         {
             "heading" : "Buy Stuff",
             "blurb" : "We'bve got you covered from the starting line to the cheers."
         },{
             "heading" : "Buy Stuff 2",
-            "blurb" : "Another Ad? AAAAAAAhhhhhhh!"
+            "blurb" : "Another d? AAAAAAAhhhhhhh!"
         }
     ]
 
@@ -66,6 +69,13 @@
 
 <Carousel />
 <VideoSection />
+
+
+<RibbonAds 
+    ads={ribbonAds}
+/> 
+
+<!--
 <Products 
     sectionTitle="Beers"
     products={beers}
@@ -74,7 +84,5 @@
     sectionTitle="Seltzers"
     products={seltzers} 
 />  
-<RibbonAds 
-    ads={ribbonAds}
-/> 
-       
+
+      --> 

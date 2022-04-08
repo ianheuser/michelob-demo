@@ -17,7 +17,7 @@
                     name="{product.fields.name}"
                     blurb="{product.fields.blurb}"
                     src="{product.fields.profileImage.fields.file.url}"
-                    alt="{product.fields.alt}"
+                    
                 />
             
             {/each}
