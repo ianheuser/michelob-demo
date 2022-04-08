@@ -9,6 +9,7 @@
     let ribbonAds = [];
     let seltzers = [];
     let beers = [];
+    let carouselAds = [];
 
     onMount(async () => {
       const client = contentful.createClient({
@@ -23,7 +24,6 @@
         "fields.type" : "Beer"
       }).then(response => {
         beers = response.items;
-        console.log(beers)
       }).catch(error => {
           console.log("Error in Beers");
           console.log(error);
@@ -45,17 +45,30 @@
         "fields.type": "ribbon"
       }).then(response => {
         ribbonAds = response.items;
-        console.dir(ribbonAds)
       }).catch(error => {
           console.log("Error in Ribbon");
           console.log(error);
       }); 
     
+      client.getEntries({
+        content_type: "adCarousel"
+      }).then(response => {
+        carouselAds = response.items[0].fields.ads;
+       /* for (const cAd in carouselAds ){
+          console.dir(carouselAds[cAd]);
+        }*/
+      }).catch(error => {
+          console.log("Error in Carousel");
+          console.log(error);
+      }); 
   });
   
 </script>
 
-<Carousel />
+<Carousel
+  ads={carouselAds}
+/>
+
 <VideoSection />
 
 <Products 

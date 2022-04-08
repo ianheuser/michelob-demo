@@ -30,7 +30,9 @@ body {
     display: flex;
 }
 
-
+.carousel.section div {
+    display: block;
+}
 #logo {
 	height: 40px;
 	display: inline-block;

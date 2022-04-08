@@ -1,35 +1,34 @@
 <script>
+import { add_location } from "svelte/internal";
 
+
+    export let ads = [];
+    
 </script>
 
 
 <div class="carousel section">
-    <div class="ad one women">
-        <div class="content">
-            <h1>Save It, See It</h1>
-            <p>When it we hit save on women's sports, we'll all see more women's sports.</p>
-            <button>Learn More</button>
+
+    {#each ads as ad }
+        {console.log(ad.fields.image.fields.file.url)}
+        <div class="ad">
+            <img src="{ad.fields.image.fields.file.url}" alt="This is the banner" />
+            <div class="content">
+                <h1>{ad.fields.headline}</h1>
+                <p>{ad.fields.text}</p>
+                <button>{ad.fields.buttonLabel}</button>
+            </div>
+
         </div>
-    </div>
-    <div class="ad two gear current">
-        <div class="content">
-            <h1>Wear Ultra</h1>
-            <p>Wanna wear ULTRA? Buy some Michelob ULTRA gear by followin g the link below</p>
-            <button>Buy Gear</button>
-        </div>
-    </div>
-    <div class="ad three ultra">
-        <div class="content">
-            <h1>Michelob Ultra</h1>
-            <h3>Superior Light Beer</h3>
-            <p>95 Calories / 2.6 Carbs</p>
-            <button>Find Michelob Ultra</button>
-        </div>
-    </div>
+    {/each}
+
     <button class="controller back">BACK</button>
     <button class="controller next">NEXT</button>
 </div>
 
 <style>
+    .content {
+
+    }
 
 </style>
