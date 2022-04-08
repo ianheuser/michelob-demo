@@ -1,81 +1,63 @@
 <script>
     import Carousel from '$lib/Carousel.svelte';
     import VideoSection from "$lib/videoSection.svelte";
+    import Products from '$lib/Products.svelte'
     import * as contentful from "contentful" ;
-  //  import Products from "$lib/Products.svelte";
-    const client = contentful.createClient({
-        space: "3q892y4ckspg",
-        accessToken: "w_ghIFLSyjNtCW4BdthHMn8WH21jXSC54suwYdXvxxQ",
-        environment: "master"
-    });
-
-  
-
-   
     import RibbonAds from "$lib/RibbonAds.svelte"
+    import { onMount } from 'svelte';
+
     let ribbonAds = [];
-  /*
-  let seltzers = [];
-  let beers = [];
-    client.getEntries({
-      content_type: "product",
-      "fields.brand.fields.name": "6qgNhvX2JOgZ80ZWyaq4zk",
-      "fields.type" : "Beer"
-    }).then(response => {
-       beers = response.items;
-       console.log(beers)
-     }).catch(error => {
-        console.log("Error in Beers");
-        console.log(error);
-    }); 
+    let seltzers = [];
+    let beers = [];
 
-    client.getEntries({
-      content_type: "product",
-      "fields.brand.sys.id": "6qgNhvX2JOgZ80ZWyaq4zk",
-      "fields.type" : "Seltzer"
-    }).then(response => {
-       seltzers = response.items;
-     }).catch(error => {
-        console.log("Error in Seltzers",error);
-    }); 
+    onMount(async () => {
+      const client = contentful.createClient({
+          space: "3q892y4ckspg",
+          accessToken: "w_ghIFLSyjNtCW4BdthHMn8WH21jXSC54suwYdXvxxQ",
+          environment: "master"
+      });
+
+      client.getEntries({
+        content_type: "product",
+        "fields.brand.sys.id": "6qgNhvX2JOgZ80ZWyaq4zk",
+        "fields.type" : "Beer"
+      }).then(response => {
+        beers = response.items;
+        console.log(beers)
+      }).catch(error => {
+          console.log("Error in Beers");
+          console.log(error);
+      }); 
+
+      client.getEntries({
+        content_type: "product",
+        "fields.brand.sys.id": "6qgNhvX2JOgZ80ZWyaq4zk",
+        "fields.type" : "Seltzer"
+      }).then(response => {
+        seltzers = response.items;
+      }).catch(error => {
+          console.log("Error in Seltzers",error);
+      }); 
+    
+      
+      client.getEntries({
+        content_type: "basicAd",
+        "fields.type": "ribbon"
+      }).then(response => {
+        ribbonAds = response.items;
+        console.dir(ribbonAds)
+      }).catch(error => {
+          console.log("Error in Ribbon");
+          console.log(error);
+      }); 
+    
+  });
   
-     */
-    client.getEntries({
-      content_type: "basicAd",
-      "fields.type": "ribbon"
-    }).then(response => {
-       ribbonAds = response.items;
-       console.dir(ribbonAds)
-     }).catch(error => {
-        console.log("Error in Ribbon");
-        console.log(error);
-    }); 
-
-  /*
-    let ribbonAds = [
-        {
-            "heading" : "Buy Stuff",
-            "blurb" : "We'bve got you covered from the starting line to the cheers."
-        },{
-            "heading" : "Buy Stuff 2",
-            "blurb" : "Another d? AAAAAAAhhhhhhh!"
-        }
-    ]
-
-    */
-
-
 </script>
 
 <Carousel />
 <VideoSection />
 
-
-<RibbonAds 
-    ads={ribbonAds}
-/> 
-
-<!--
 <Products 
     sectionTitle="Beers"
     products={beers}
@@ -85,4 +67,9 @@
     products={seltzers} 
 />  
 
-      --> 
+<RibbonAds 
+    ads={ribbonAds}
+/> 
+
+
+    
