@@ -1,16 +1,20 @@
 <script>
-import { add_location } from "svelte/internal";
-
 
     export let ads = [];
-    
+    import { onMount } from 'svelte';
+
+	let current = true;
+
+	onMount(async () => {
+		current = false;
+	});
 </script>
 
 
 <div class="carousel section">
 
     {#each ads as ad }
-        {console.log(ad.fields.image.fields.file.url)}
+        
         <div class="ad">
             <img src="{ad.fields.image.fields.file.url}" alt="This is the banner" />
             <div class="content">
@@ -20,6 +24,7 @@ import { add_location } from "svelte/internal";
             </div>
 
         </div>
+        {console.log(current)}
     {/each}
 
     <button class="controller back">BACK</button>

@@ -54,9 +54,9 @@
         content_type: "adCarousel"
       }).then(response => {
         carouselAds = response.items[0].fields.ads;
-       /* for (const cAd in carouselAds ){
+       for (const cAd in carouselAds ){
           console.dir(carouselAds[cAd]);
-        }*/
+        }
       }).catch(error => {
           console.log("Error in Carousel");
           console.log(error);
