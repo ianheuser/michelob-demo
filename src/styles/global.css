@@ -13,6 +13,7 @@ body {
     display: block;
     margin: auto;
     padding: 0px;
+    width: 1248px;
 }
 
 .navigation.section {
@@ -23,16 +24,7 @@ body {
     text-transform: uppercase;
 }
 
-.carousel.section {
-    min-height: 800px;
-    height: 800px;
-    position: relative;
-    display: flex;
-}
 
-.carousel.section div {
-    display: block;
-}
 #logo {
 	height: 40px;
 	display: inline-block;
@@ -105,54 +97,15 @@ ul.navLink li:hover {
 
 .ad {
     width: 100%;
-    display: none;
-    min-height: 300px;
+}
+
+#main {
+
 }
 
 .current {
     display: block;
     position: relative;
-}
-.carousel.section .ad {
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 500px;
-    height: 100%;
-}
-
-.ad.women {
-    background-image: url(img/banner_women.jpg);
-}
-
-.ad.gear {
-    background-image: url(img/banner_gear_ultra.jpg);
-}
-
-.ad.ultra {
-    background-image: url(img/banner_ultra_wStats.jpg)
-}
-
-.ad .content{
-    width: 100%;
-    text-align: center;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-}
-
-.ad .content h1 {
-    font-size: 64px;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 0px;
-    margin: 0px;
-}
-
-.ad .content p {
-    font-size: 32px;
-    font-weight: lighter;
 }
 
 .content button{

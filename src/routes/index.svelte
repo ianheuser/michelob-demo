@@ -1,6 +1,6 @@
 <script>
     import Carousel from '$lib/Carousel.svelte';
-    import VideoSection from "$lib/videoSection.svelte";
+    import VideoSection from "$lib/VideoSection.svelte";
     import Products from '$lib/Products.svelte'
     import * as contentful from "contentful" ;
     import RibbonAds from "$lib/RibbonAds.svelte"
@@ -10,6 +10,7 @@
     let seltzers = [];
     let beers = [];
     let carouselAds = [];
+    let videoAds = [];
 
     onMount(async () => {
       const client = contentful.createClient({
@@ -51,6 +52,16 @@
       }); 
     
       client.getEntries({
+        content_type: "basicAd",
+        "fields.type": "video"
+      }).then(response => {
+        videoAds = response.items;
+      }).catch(error => {
+          console.log("Error in Ribbon");
+          console.log(error);
+      }); 
+
+      client.getEntries({
         content_type: "adCarousel"
       }).then(response => {
         carouselAds = response.items[0].fields.ads;
@@ -69,7 +80,9 @@
   ads={carouselAds}
 />
 
-<VideoSection />
+<VideoSection 
+  ads = {videoAds} 
+  />
 
 <Products 
     sectionTitle="Beers"
